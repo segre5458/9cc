@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "atomic": "c",
+        "type_traits": "c",
+        "functional": "c"
+    }
+}
