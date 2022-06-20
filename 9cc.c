@@ -40,6 +40,23 @@ struct Node
     int val;
 };
 
+Node *new_node(NodeKind kind, Node *lhs, Node *rhs)
+{
+    Node *node = calloc(1, sizeof(Node));
+    node->kind = kind;
+    node->lhs = lhs;
+    node->rhs = rhs;
+    return node;
+}
+
+Node *new_node_num(int val)
+{
+    Node *node = calloc(1, sizeof(Node));
+    node->kind = ND_NUM;
+    node->val = val;
+    return node;
+}
+
 void error(char *fmt, ...)
 {
     va_list ap;
@@ -132,23 +149,6 @@ Token *tokenize(char *p)
 
     new_token(TK_EOF, cur, p);
     return head.next;
-}
-
-Node *new_node(NodeKind kind, Node *lhs, Node *rhs)
-{
-    Node *node = calloc(1, sizeof(Node));
-    node->kind = kind;
-    node->lhs = lhs;
-    node->rhs = rhs;
-    return node;
-}
-
-Node *new_node_num(int val)
-{
-    Node *node = calloc(1, sizeof(Node));
-    node->kind = ND_NUM;
-    node->val = val;
-    return node;
 }
 
 Node *expr()
