@@ -13,7 +13,6 @@ typedef enum
 } TokenKind;
 
 typedef struct Token Token;
-
 struct Token
 {
     TokenKind kind;
@@ -23,7 +22,6 @@ struct Token
 };
 
 Token *token;
-
 typedef enum
 {
     ND_ADD,
@@ -34,7 +32,6 @@ typedef enum
 } NodeKind;
 
 typedef struct Node Node;
-
 struct Node
 {
     NodeKind kind;
@@ -53,7 +50,6 @@ void error(char *fmt, ...)
 }
 
 char *user_input;
-
 void error_at(char *loc, char *fmt, ...)
 {
     va_list ap;
@@ -249,7 +245,7 @@ int main(int argc, char **argv)
 
     gen(node);
 
-    pirntf("    pop rax\n");
+    printf("    pop rax\n");
     printf("    ret\n");
     return 0;
 }
