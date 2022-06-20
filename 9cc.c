@@ -187,6 +187,14 @@ Node *mul()
     }
 }
 
+Node *unary(){
+    if (consume('+'))
+        return primary();
+    if (consume('-'))
+        return new_node(ND_SUB, new_node_num(0), primary());
+    return primary();
+}
+
 Node *primary()
 {
     if (consume('('))
@@ -197,14 +205,6 @@ Node *primary()
     }
 
     return new_node_num(expect_number());
-}
-
-Node *unary(){
-    if (consume('+'))
-        return primary();
-    if (consume('-'))
-        return new_node(ND_SUB, new_node_num(0), primary());
-    return primary();
 }
 
 void gen(Node *node)
